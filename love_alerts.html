@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Alerts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe0ec, #d0e4ff);
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffffd9;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(255, 80, 150, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff4d88;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+    }
+
+    .alert-card {
+      background: #fff6fb;
+      border-left: 6px solid #ff69b4;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .alert-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #d60087;
+    }
+
+    .alert-desc {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 25px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 25px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 19px;
+      width: 19px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #ff69b4;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .add-new {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .add-new input, .add-new button {
+      padding: 10px;
+      margin: 5px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .add-new button {
+      background: #ff69b4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-new button:hover {
+      background: #ff3f98;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💌 Love Alerts</h1>
+
+    <div class="alert-card">
+      <div>
+        <div class="alert-title">💖 Anniversary</div>
+        <div class="alert-desc">Every year on Feb 17 – celebrate your love!</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="alert-card">
+      <div>
+        <div class="alert-title">📞 First Call Memory</div>
+        <div class="alert-desc">Remind yourself of the night your voices met.</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="alert-card">
+      <div>
+        <div class="alert-title">🎁 Surprise Day</div>
+        <div class="alert-desc">That day when you planned something unforgettable.</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="alert-card">
+      <div>
+        <div class="alert-title">🕊️ Patch-up Day</div>
+        <div class="alert-desc">After the fight, when hearts hugged silently again.</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="add-new">
+      <input type="text" placeholder="💡 Add New Alert (e.g. First Hug)">
+      <button>Add Alert</button>
+    </div>
+  </div>
+</body>
+</html>

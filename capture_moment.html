@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capture a Moment</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .container h1 {
+      font-size: 2rem;
+      color: #ff75a0;
+      margin-bottom: 20px;
+    }
+
+    .input-field {
+      margin-bottom: 20px;
+    }
+
+    .input-field input, .input-field textarea {
+      width: 100%;
+      padding: 15px;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .input-field input[type="file"] {
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .button {
+      background: #ff75a0;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #f5608c;
+    }
+
+    .memory-list {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+    }
+
+    .memory {
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .memory img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .memory .details {
+      display: inline-block;
+      vertical-align: top;
+      max-width: calc(100% - 120px);
+    }
+
+    .memory .details h4 {
+      color: #ff75a0;
+      font-size: 1.1rem;
+    }
+
+    .memory .details p {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📸 Capture a Moment</h1>
+    <p>Preserve your special feelings & memories here.</p>
+
+    <div class="input-field">
+      <input type="text" id="memoryTitle" placeholder="Title of your memory" />
+    </div>
+    <div class="input-field">
+      <textarea id="memoryDescription" rows="4" placeholder="Describe your moment..."></textarea>
+    </div>
+    <div class="input-field">
+      <input type="file" id="memoryImage" />
+    </div>
+    <button class="button" onclick="storeMemory()">Capture</button>
+
+    <div class="memory-list" id="memoryList"></div>
+  </div>
+
+  <script>
+    // Function to capture and store memory
+    function storeMemory() {
+      const title = document.getElementById('memoryTitle').value;
+      const description = document.getElementById('memoryDescription').value;
+      const image = document.getElementById('memoryImage').files[0];
+
+      if (title && description && image) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          const memoryHTML = `
+            <div class="memory">
+              <img src="${reader.result}" alt="${title}" />
+              <div class="details">
+                <h4>${title}</h4>
+                <p>${description}</p>
+              </div>
+            </div>
+          `;
+
+          const memoryList = document.getElementById('memoryList');
+          memoryList.insertAdjacentHTML('beforeend', memoryHTML);
+
+          // Clear the form after submission
+          document.getElementById('memoryTitle').value = '';
+          document.getElementById('memoryDescription').value = '';
+          document.getElementById('memoryImage').value = '';
+        };
+        reader.readAsDataURL(image); // Read image as base64
+      } else {
+        alert('Please fill all fields!');
+      }
+    }
+  </script>
+
+</body>
+</html>

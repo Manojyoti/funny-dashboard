@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apology Center</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #ff6f91;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 80%;
+      max-width: 500px;
+      height: 150px;
+      padding: 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      resize: none;
+      background: #2e2e3a;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 30px;
+      background-color: #ff6f91;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e85c7c;
+    }
+
+    .heart {
+      font-size: 2rem;
+      animation: beat 1s infinite;
+      margin-top: 20px;
+      color: #ff6f91;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .thank-you {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3rem;
+      color: #ffd5ec;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Apology Center 💌</h1>
+  <p>Made a mistake? Send your heartfelt apology here, and resolve misunderstandings with love.</p>
+
+  <textarea id="apologyMessage" placeholder="Type your heartfelt sorry message..."></textarea>
+  <br/>
+  <button onclick="sendApology()">Say Sorry</button>
+
+  <div class="heart">💖</div>
+  <div class="thank-you" id="thankYou">Your apology has been sent with love 💌</div>
+
+  <script>
+    function sendApology() {
+      const message = document.getElementById("apologyMessage").value.trim();
+      if (message.length > 0) {
+        document.getElementById("thankYou").style.display = "block";
+        document.getElementById("apologyMessage").value = "";
+        // Optional: Save to backend or database
+        console.log("Apology Sent:", message);
+      } else {
+        alert("Please type a heartfelt message before sending 💔");
+      }
+    }
+  </script>
+
+</body>
+</html>

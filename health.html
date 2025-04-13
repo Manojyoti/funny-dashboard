@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Safety Monitor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #011222, #e3770b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(223, 204, 223, 0.2);
+      backdrop-filter: blur(12px);
+      width: 350px;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #582333;
+      text-shadow: 0 0 10px #eae5e0;
+      margin-bottom: 20px;
+    }
+
+    .metrics {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .metric span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffd3f8;
+    }
+
+    .heart-icon {
+      font-size: 3rem;
+      color: #ff73c2;
+      margin-bottom: 10px;
+    }
+
+    .safety-status {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #ff99cc;
+    }
+
+    .safety-btn {
+      background: linear-gradient(135deg, #ff66b2, #ff1a8c);
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(255, 50, 150, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .safety-btn:hover {
+      background: linear-gradient(135deg, #ff4c99, #ff007f);
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .safety-btn:active {
+      animation: pulse 0.5s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="title">Heart Safety Monitor 💖</div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="heart-icon">❤️</div>
+        <span>Love</span>
+        <p>85%</p>
+      </div>
+      <div class="metric">
+        <div class="heart-icon">🤝</div>
+        <span>Trust</span>
+        <p>90%</p>
+      </div>
+      <div class="metric">
+        <div class="heart-icon">💬</div>
+        <span>Communication</span>
+        <p>80%</p>
+      </div>
+    </div>
+
+    <div class="safety-status">
+      <p>Your relationship is in good standing! 💪</p>
+    </div>
+
+    <button class="safety-btn" onclick="viewSafety()">View Safety</button>
+  </div>
+
+  <script>
+    function viewSafety() {
+      alert("Viewing full safety report...💖\nLove: 85%\nTrust: 90%\nCommunication: 80%");
+    }
+  </script>
+
+</body>
+</html>

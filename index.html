@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For You 💗</title>
+
+  
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      display: inline-block;
+      animation: popIn 1.2s ease;
+    }
+
+    h1 {
+      color: #ff4081;
+    }
+
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h1>Hey You! 💌</h1>
+    <p>Aap Manoj ke kya lagte ho?</p>
+    <input type="text" id="relationInput" placeholder="Type here..." />
+    <br>
+    <button onclick="checkRelation()">Submit</button>
+  </div>
+
+  <script>
+    function checkRelation() {
+      const input = document.getElementById('relationInput').value.toLowerCase().trim();
+      if (input === "wife" || input.includes("patni") || input.includes("jaan")) {
+        window.location.href = "surprise.html";
+      } else {
+        alert("Sirf special logon ke liye hai yeh ✨");
+      }
+    }
+  </script>
+
+</body>
+</html>

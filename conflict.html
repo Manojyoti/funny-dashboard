@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conflict Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #e6e9f0, #eef1f5);
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 50px auto;
+      padding: 40px;
+      background: #ffffffeb;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.6rem;
+      color: #c14578;
+      margin-bottom: 20px;
+    }
+
+    .sub {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .conflict-box {
+      background: #fff5f5;
+      border-left: 6px solid #ff6f91;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 10px rgba(255, 0, 98, 0.07);
+    }
+
+    .conflict-box h3 {
+      margin: 0;
+      color: #d6306b;
+    }
+
+    .conflict-box p {
+      margin: 5px 0;
+      color: #444;
+    }
+
+    .resolution {
+      background: #f0fff5;
+      border-left: 6px solid #52d89f;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+    }
+
+    .resolution h4 {
+      margin: 0;
+      color: #2b8a5e;
+    }
+
+    .pulse {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #ff9ab5;
+      margin: 30px auto;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .log-new {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .log-new input, .log-new button {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 2px solid #ff6f91;
+      margin: 5px;
+      font-size: 0.95rem;
+    }
+
+    .log-new button {
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .log-new button:hover {
+      background: #e95077;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Conflict Detection</h1>
+    <div class="sub">Analyze and assess potential conflicts, and find solutions to keep your relationship strong and healthy.</div>
+
+    <div class="pulse"></div>
+
+    <div class="conflict-box">
+      <h3>💬 Miscommunication (April 5)</h3>
+      <p><strong>Issue:</strong> Misunderstood text message led to silence for 2 days.</p>
+      <p><strong>Emotional Impact:</strong> Moderate</p>
+    </div>
+
+    <div class="resolution">
+      <h4>💡 Suggestion:</h4>
+      <p>Talk it out calmly. Express how it felt and clarify intentions.</p>
+    </div>
+
+    <div class="conflict-box">
+      <h3>📱 Time Management (March 28)</h3>
+      <p><strong>Issue:</strong> One partner felt ignored due to work overload.</p>
+      <p><strong>Emotional Impact:</strong> Mild</p>
+    </div>
+
+    <div class="resolution">
+      <h4>💡 Suggestion:</h4>
+      <p>Plan a small catch-up ritual. Even 15 mins can mean the world ❤️</p>
+    </div>
+
+    <div class="log-new">
+      <input type="text" placeholder="Log new conflict (e.g. Missed Date)">
+      <button>Resolve</button>
+    </div>
+  </div>
+</body>
+</html>

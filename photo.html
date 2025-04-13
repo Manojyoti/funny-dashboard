@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Risk Management Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .heart-toggle {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ff4081;
+      animation: pulseHeart 1.5s infinite;
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .sidebar {
+      background: #222;
+      width: 250px;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar.active {
+      display: flex;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .sidebar h1 { font-size: 1.8rem; color: #ff4081; margin-bottom: 20px; }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #333;
+      width: 100%;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar a:hover { background-color: #ff4081; }
+    .unlock-message { font-size: 1rem; color: #ff4081; margin-top: 10px; }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      overflow: hidden;
+      margin-left: 60px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ff4081;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ff4081;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #fff;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+    }
+
+    .floating-data {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #ff4081;
+      font-weight: bold;
+      opacity: 0.8;
+      animation: floatData 5s infinite ease-in-out;
+    }
+
+    @keyframes floatData {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heart-toggle" onclick="toggleSidebar()">❤️</div>
+
+  <div class="sidebar" id="sidebar">
+    <h1>Love Risk</h1>
+    <p class="unlock-message">Yahan Bhi Pahunch Gaye💖</p>
+    <a href="health">Heart Safety Monitor</a>
+    <a href="soulmate">Soulmate Snap</a>
+    <a href="love">Vulnerability Assessment</a>
+    <a href="emotional">Emotion Tracker</a>
+    <a href="love_alerts">Love Alerts</a>
+    <a href="apology">Apology Center</a>
+    <a href="capture_moment">Capture Moment</a>
+    <a href="conflict">Conflict Detection</a>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h1>Love Risk Management Dashboard</h1>
+      <p>Track and protect your love journey with real-time data visualizations and risk assessments.</p>
+    </div>
+
+    <div class="dashboard">
+      <div class="card">
+        <h2>Heart Safety Monitor</h2>
+        <p>Monitor relationship health: love, trust, balance.</p>
+        <div class="chart-container"><canvas id="heartSafetyChart"></canvas></div>
+      </div>
+
+      <div class="card">
+        <h2>Vulnerability Assessment</h2>
+        <p>Evaluate love risks and prevent heartbreaks in advance.</p>
+        <div class="chart-container"><canvas id="vulnerabilityChart"></canvas></div>
+      </div>
+
+      <div class="card">
+        <h2>Emotion Tracker</h2>
+        <p>Track love & emotional trends between you two 💞</p>
+        <div class="chart-container"><canvas id="emotionChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="floating-data">
+      💓 Love Health Status: 85% | 🔒 Vulnerability: Low
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+
+    function getLiveData() {
+      return {
+        heartSafety: Math.floor(Math.random() * 100),
+        vulnerability: Math.floor(Math.random() * 100),
+        emotion: Math.floor(Math.random() * 100)
+      };
+    }
+
+    // Chart Initialization
+    const ctx1 = document.getElementById('heartSafetyChart').getContext('2d');
+    const ctx2 = document.getElementById('vulnerabilityChart').getContext('2d');
+    const ctx3 = document.getElementById('emotionChart').getContext('2d');
+
+    const heartChart = new Chart(ctx1, {
+      type: 'doughnut',
+      data: {
+        labels: ['Safe', 'Unsafe'],
+        datasets: [{
+          data: [85, 15],
+          backgroundColor: ['#ff4081', '#444']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    const vulnerabilityChart = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Risk Score',
+          data: [10, 20, 25, 40, 35],
+          backgroundColor: 'rgba(255, 64, 129, 0.3)',
+          borderColor: '#ff4081',
+          fill: true
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    const emotionChart = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Love', 'Trust', 'Care', 'Communication'],
+        datasets: [{
+          label: 'Level',
+          data: [85, 75, 70, 80],
+          backgroundColor: '#ff4081'
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    // Optional: Live update
+    setInterval(() => {
+      const data = getLiveData();
+      heartChart.data.datasets[0].data = [data.heartSafety, 100 - data.heartSafety];
+      vulnerabilityChart.data.datasets[0].data[4] = data.vulnerability;
+      emotionChart.data.datasets[0].data[0] = data.emotion;
+      heartChart.update(); vulnerabilityChart.update(); emotionChart.update();
+    }, 5000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soulmate Snap</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <source src="static/love_music.mp3" type="audio/mp3">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #603708, #f4a261);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(116, 59, 10, 0.2);
+      backdrop-filter: blur(12px);
+      width: 400px;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #6b2828;
+      text-shadow: 0 0 10px #ff9b9b;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #ffd3db;
+    }
+
+    .upload-btn {
+      background: linear-gradient(135deg, #d45b32, #ff1a1a);
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(255, 50, 150, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background: linear-gradient(135deg, #ff4c99, #ff007f);
+      transform: scale(1.05);
+    }
+
+    .manage-btn {
+      background: linear-gradient(135deg, #ffc3a0, #ff6e5e);
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 3px 10px rgba(255, 50, 150, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .manage-btn:hover {
+      background: linear-gradient(135deg, #ff9375, #ff5f5b);
+      transform: scale(1.05);
+    }
+
+    .upload-input {
+      margin-top: 20px;
+      display: inline-block;
+      color: #751e1e;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff4b8b;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .upload-input input[type="file"] {
+      background: transparent;
+      color: inherit;
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .upload-input input[type="file"]:hover {
+      color: #ff66b2;
+    }
+
+    .upload-input label {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="title">Soulmate Snap 💖</div>
+    <div class="description">
+      Upload photos, videos, and create precious memories with your soulmate. Protect your most special moments.
+    </div>
+
+    <div class="upload-input">
+      <label for="mediaUpload">Choose Photos or Videos</label>
+      <input type="file" id="mediaUpload" accept="image/*, video/*" multiple />
+    </div>
+
+    <button class="upload-btn" onclick="uploadMedia()">Upload Snap</button>
+
+    <button class="manage-btn" onclick="manageSnap()">Manage Snap</button>
+  </div>
+
+  <script>
+    function uploadMedia() {
+      const fileInput = document.getElementById('mediaUpload');
+      if (fileInput.files.length === 0) {
+        alert("Please select photos or videos to upload.");
+        return;
+      }
+
+      // Here you would typically send the media files to the server for uploading
+      alert(`${fileInput.files.length} file(s) selected for upload.`);
+    }
+
+    function manageSnap() {
+      // Redirect to the page where user can manage their snaps (e.g., manage.html)
+      window.location.href = 'soulmate.html';
+    }
+  </script>
+
+</body>
+</html>

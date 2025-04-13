@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe0f7, #d4eaff);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 100, 150, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ff4081;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      margin: 30px 0;
+    }
+
+    .timeline {
+      margin-top: 40px;
+    }
+
+    .memory {
+      background: #fff0f5;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 5px solid #ff69b4;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .memory span {
+      font-weight: bold;
+      color: #d60087;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💗 Emotion Tracker</h1>
+
+    <canvas id="emotionChart" height="100"></canvas>
+
+    <h2>🗣️ Communication Frequency</h2>
+    <canvas id="communicationChart" height="70"></canvas>
+
+    <div class="timeline">
+      <h2>🕰️ Key Emotional Moments</h2>
+      <div class="memory"><span>💬 First Confession:</span> You said "I love you" and everything changed. (2023-10-11)</div>
+      <div class="memory"><span>😢 First Fight:</span> Misunderstanding over a text... but made you stronger. (2024-03-17)</div>
+      <div class="memory"><span>🎉 Most Happy Day:</span> Surprise gift + long call. Full of love! (2023-11-08)</div>
+      <div class="memory"><span>🤝 Patch-up Moment:</span> Heartfelt voice note ended 3 days of silence. (2023-12-10)</div>
+    </div>
+  </div>
+
+  <script>
+    // Emotion Trend Graph
+    const emotionCtx = document.getElementById('emotionChart').getContext('2d');
+    new Chart(emotionCtx, {
+      type: 'line',
+      data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+        datasets: [{
+          label: 'Emotional Intensity',
+          data: [70, 85, 60, 90, 78],
+          fill: true,
+          borderColor: '#ff4081',
+          backgroundColor: 'rgba(255, 64, 129, 0.2)',
+          tension: 0.4,
+          pointRadius: 5,
+          pointBackgroundColor: '#ff4081'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+
+    // Communication Frequency
+    const commCtx = document.getElementById('communicationChart').getContext('2d');
+    new Chart(commCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'No. of Heartfelt Conversations',
+          data: [4, 3, 2, 5, 6, 4, 3],
+          backgroundColor: '#d60087'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

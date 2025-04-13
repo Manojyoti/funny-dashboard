@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Vulnerability Assessment</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+      backdrop-filter: blur(12px);
+      width: 400px;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #ff4081;
+      text-shadow: 0 0 6px #fff0f5;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, #ff6a95, #ff4081);
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+    }
+
+    .btn-start:hover {
+      background: linear-gradient(135deg, #ff4b7d, #ff005e);
+      transform: scale(1.05);
+    }
+
+    .heart-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #ff4b7d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="heart-icon">💗</div>
+    <div class="title">Love Vulnerability Assessment</div>
+    <div class="description">
+      Assess potential risks and vulnerabilities in your relationship.<br>
+      Stay ahead and protect your love. 💖
+    </div>
+    <button class="btn-start" onclick="startAssessment()">Start Assessment</button>
+  </div>
+
+  <script>
+    function startAssessment() {
+      window.location.href = "assessment.html";
+    }
+  </script>
+
+</body>
+</html>

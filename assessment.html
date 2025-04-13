@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Vulnerability Assessment</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff4081;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 25px;
+    }
+
+    .question p {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .options label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: block;
+      margin: 30px auto;
+      background: linear-gradient(135deg, #ff6a95, #ff4081);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #ff4b7d, #ff005e);
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ff005e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💗 Love Vulnerability Assessment</h1>
+
+    <form id="assessmentForm">
+      <div class="question">
+        <p>1. How often do you openly communicate your feelings?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="4" required> Always</label>
+          <label><input type="radio" name="q1" value="3"> Often</label>
+          <label><input type="radio" name="q1" value="2"> Sometimes</label>
+          <label><input type="radio" name="q1" value="1"> Rarely</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. How much do you trust your partner?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="4" required> Completely</label>
+          <label><input type="radio" name="q2" value="3"> Mostly</label>
+          <label><input type="radio" name="q2" value="2"> A little</label>
+          <label><input type="radio" name="q2" value="1"> Not really</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. How often do you resolve conflicts with care and understanding?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="4" required> Always</label>
+          <label><input type="radio" name="q3" value="3"> Often</label>
+          <label><input type="radio" name="q3" value="2"> Sometimes</label>
+          <label><input type="radio" name="q3" value="1"> Rarely</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. How emotionally supportive are you to each other?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="4" required> Fully supportive</label>
+          <label><input type="radio" name="q4" value="3"> Mostly</label>
+          <label><input type="radio" name="q4" value="2"> Sometimes</label>
+          <label><input type="radio" name="q4" value="1"> Not much</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Do you both feel secure and loved in the relationship?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="4" required> Absolutely</label>
+          <label><input type="radio" name="q5" value="3"> Mostly</label>
+          <label><input type="radio" name="q5" value="2"> Sometimes</label>
+          <label><input type="radio" name="q5" value="1"> Not sure</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Submit Assessment</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let total = 0;
+      for (let i = 1; i <= 5; i++) {
+        let val = document.querySelector('input[name="q' + i + '"]:checked');
+        total += parseInt(val.value);
+      }
+
+      let message = "";
+      if (total >= 18) {
+        message = `💖 Your Love Vulnerability Score is ${total}/20 — You're deeply connected. Just keep communicating & loving!`;
+      } else if (total >= 14) {
+        message = `💞 Your Score is ${total}/20 — You're doing great, but a little more emotional bonding can strengthen it.`;
+      } else {
+        message = `💔 Your Score is ${total}/20 — Some vulnerability exists. Have an open heart-to-heart conversation soon.`;
+      }
+
+      document.getElementById('result').innerText = message;
+    });
+  </script>
+</body>
+</html>

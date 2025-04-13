@@ -1,0 +1,52 @@
+
+    /* Existing CSS remains unchanged — I've skipped rest for brevity */
+
+    .hidden {
+      display: none;
+    }
+
+    #animationCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      background: black;
+    }
+
+    #memoryGallery {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2000;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to bottom, #1a001a, #330033);
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+      overflow-y: auto;
+      animation: fadeInGallery 2s ease-in;
+    }
+
+    #memoryGallery h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffcaff;
+      text-shadow: 0 0 10px #ff80d5;
+    }
+
+    .photos img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ff90e0;
+    }
+
+    @keyframes fadeInGallery {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  
+   
